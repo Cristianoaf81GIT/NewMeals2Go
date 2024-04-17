@@ -6,16 +6,30 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "lint": "eslint \"{App.jsx, src/**}\"",
+    "lint:fix": "eslint --fix \"{App.jsx, src/**}\"",
+    "format:fix": "prettier --config .prettierrc.json --write \"{App.jsx, src/**}\""
   },
   "dependencies": {
-    "expo": "~50.0.8",
+    "expo": "^50.0.17",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
-    "react-native": "0.73.4"
+    "react-native": "0.73.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@eslint/eslintrc": "^3.0.2",
+    "@eslint/js": "^9.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.1.0",
+    "globals": "^15.0.0",
+    "prettier": "3.2.5"
   },
   "private": true
 }
