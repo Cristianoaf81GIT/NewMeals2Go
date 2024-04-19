@@ -9,13 +9,16 @@
     "web": "expo start --web",
     "lint": "eslint \"{App.jsx, src/**}\"",
     "lint:fix": "eslint --fix \"{App.jsx, src/**}\"",
-    "format:fix": "prettier --config .prettierrc.json --write \"{App.jsx, src/**}\""
+    "format:fix": "prettier --config .prettierrc.json --write \"{App.jsx, src/**}\"",
+    "prepare": "husky"
   },
   "dependencies": {
     "expo": "^50.0.17",
     "expo-status-bar": "~1.11.1",
+    "pre-commit": "^1.2.2",
     "react": "18.2.0",
-    "react-native": "0.73.6"
+    "react-native": "0.73.6",
+    "react-native-paper": "^5.12.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -29,6 +32,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-native": "^4.1.0",
     "globals": "^15.0.0",
+    "husky": "^9.0.11",
     "prettier": "3.2.5"
   },
   "private": true
