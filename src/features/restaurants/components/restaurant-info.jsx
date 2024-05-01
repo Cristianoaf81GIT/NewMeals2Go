@@ -1,5 +1,15 @@
 import React from "react";
-import { Text } from "react-native";
+import { StyleSheet } from "react-native";
+import { Card, Text as PaperText, MD2Colors } from "react-native-paper";
+
+const styles = StyleSheet.create({
+  cardContainer: {
+    backgroundColor: MD2Colors.grey200
+  },
+  image: {
+    margin: 16
+  }
+});
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -12,5 +22,12 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
     isClosedTemporarily
   } = restaurant;
 
-  return <Text>{name}</Text>;
+  return (
+    <Card mode="elevated" style={styles.cardContainer}>
+      <Card.Cover source={{ uri: photos[0] }} style={styles.image} />
+      <Card.Content>
+        <PaperText variant="bodyMedium">{name}</PaperText>
+      </Card.Content>
+    </Card>
+  );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, SafeAreaView, Platform, StatusBar as Bar } from "react-native";
 import { Searchbar, MD2Colors } from "react-native-paper";
-import { RestaurantInfo } from '../components/restaurant-info'
+import { RestaurantInfo } from "../components/restaurant-info";
 
 const styles = StyleSheet.create({
   container: {
