@@ -8,10 +8,13 @@ const styles = StyleSheet.create({
   },
   image: {
     margin: 16
+  },
+  title: {
+    padding: 16
   }
 });
 
-export const RestaurantInfo = ({ restaurant = {} }) => {
+export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some restaurant",
     icon,
@@ -23,10 +26,12 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
   } = restaurant;
 
   return (
-    <Card mode="elevated" style={styles.cardContainer}>
+    <Card mode="elevated" style={styles.cardContainer} elevation={5}>
       <Card.Cover source={{ uri: photos[0] }} style={styles.image} />
       <Card.Content>
-        <PaperText variant="bodyMedium">{name}</PaperText>
+        <PaperText style={styles.title} variant="bodyMedium">
+          {name}
+        </PaperText>
       </Card.Content>
     </Card>
   );

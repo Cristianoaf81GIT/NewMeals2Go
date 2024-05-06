@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, SafeAreaView, Platform, StatusBar as Bar } from "react-native";
 import { Searchbar, MD2Colors } from "react-native-paper";
-import { RestaurantInfo } from "../components/restaurant-info";
+import { RestaurantInfoCard } from "../components/restaurant-info-card";
 
 const styles = StyleSheet.create({
   container: {
@@ -42,7 +42,7 @@ export const RestaurantsScreen = () => {
         />
       </View>
       <View style={styles.list}>
-        <RestaurantInfo />
+        <RestaurantInfoCard />
       </View>
     </SafeAreaView>
   );
