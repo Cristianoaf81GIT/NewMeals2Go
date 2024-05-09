@@ -1,23 +1,8 @@
 import React from "react";
-import { StyleSheet, View, SafeAreaView, Platform, StatusBar as Bar } from "react-native";
+import { View, SafeAreaView, Platform, StatusBar as Bar } from "react-native";
 import { Searchbar, MD2Colors } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: Bar.currentHeight + 1
-  },
-  search: {
-    padding: 16,
-    backgroundColor: MD2Colors.grey200,
-    marginTop: Platform.OS === "android" ? Bar.currentHeight + 1 : 0
-  },
-  searchBar: {
-    backgroundColor: MD2Colors.grey50
-  },
-  list: { flex: 1, padding: 16, backgroundColor: MD2Colors.grey50 }
-});
+import { styled } from "styled-components/native";
 
 const SearchBarTheme = {
   colors: {
@@ -26,24 +11,45 @@ const SearchBarTheme = {
   elevation: 0
 };
 
+const SafeContainer = styled(SafeAreaView)`
+  display: flex;
+  flex: 1;
+  margin-top: ${Bar.currentHeight + 1} px;
+`;
+
+const SearchContainer = styled(View)`
+  padding: 16px;
+  background-color: ${MD2Colors.grey200};
+  margin-top: ${Platform.OS === "android" ? Bar.currentHeight + 1 : 0};
+`;
+
+const SearchBarComponent = styled(Searchbar)`
+  background-color: ${MD2Colors.grey50};
+`;
+
+const RestaurantListContainer = styled(View)`
+  flex: 1;
+  padding: 16px;
+  background-color: ${MD2Colors.grey50};
+`;
+
 export const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.search}>
-        <Searchbar
+    <SafeContainer>
+      <SearchContainer>
+        <SearchBarComponent
           placeholder="Buscar"
           onChangeText={setSearchQuery}
           value={searchQuery}
           theme={SearchBarTheme.colors}
-          style={styles.searchBar}
           elevation={SearchBarTheme.elevation}
         />
-      </View>
-      <View style={styles.list}>
+      </SearchContainer>
+      <RestaurantListContainer>
         <RestaurantInfoCard />
-      </View>
-    </SafeAreaView>
+      </RestaurantListContainer>
+    </SafeContainer>
   );
 };
