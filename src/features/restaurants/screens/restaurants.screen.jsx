@@ -4,6 +4,8 @@ import { Searchbar, MD2Colors } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card";
 import { styled } from "styled-components/native";
 
+const isAndroid = Platform.OS === "android";
+
 const SearchBarTheme = {
   colors: {
     primary: MD2Colors.blue500
@@ -14,13 +16,12 @@ const SearchBarTheme = {
 const SafeContainer = styled(SafeAreaView)`
   display: flex;
   flex: 1;
-  margin-top: ${Bar.currentHeight + 1} px;
+  margin-top: ${isAndroid ? Bar.currentHeight + 1 : 0}px
 `;
 
 const SearchContainer = styled(View)`
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
   background-color: ${MD2Colors.grey200};
-  margin-top: ${Platform.OS === "android" ? Bar.currentHeight + 1 : 0};
 `;
 
 const SearchBarComponent = styled(Searchbar)`
@@ -29,7 +30,7 @@ const SearchBarComponent = styled(Searchbar)`
 
 const RestaurantListContainer = styled(View)`
   flex: 1;
-  padding: 16px;
+  padding: ${props => props.theme.space[3]};
   background-color: ${MD2Colors.grey50};
 `;
 
