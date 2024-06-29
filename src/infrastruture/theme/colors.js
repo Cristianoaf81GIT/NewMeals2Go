@@ -14,11 +14,9 @@ export const colors = {
     disabled: "#dedede",
     error: "#d0421b",
     success: "#138000",
-    grey: {
-      light: MD2Colors.grey50,
-      medium: MD2Colors.grey200,
-      dark: MD2Colors.grey400
-    }
+    lightgrey: MD2Colors.grey50,
+    mediumgrey: MD2Colors.grey200,
+    darkgrey: MD2Colors.grey400,
   },
   bg: {
     primary: "#FFFFFF",
