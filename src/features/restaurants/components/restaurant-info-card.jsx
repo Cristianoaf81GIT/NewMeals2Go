@@ -3,6 +3,7 @@ import { Card, Text as PaperText, MD2Colors } from "react-native-paper";
 import { styled } from "styled-components/native";
 import Star from "../../../assets/star.svg";
 import OpenIcon from "../../../assets/open.svg";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import uuid from "react-native-uuid";
 
 const RestaurantCard = styled(Card).attrs({ mode: "elevated", elevation: 5 })`
@@ -76,7 +77,9 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           </Rating>
           <SectionEnd>
             {isClosedTemporarily && <ClosedTemporarily>CLOSED TEMPORARILY</ClosedTemporarily>}
+            <Spacer variant="left.large" />
             {isOpenNow && <OpenIcon width={20} height={20} />}
+            <Spacer variant="left.large"/>
           </SectionEnd>
         </Section>
         <Address>{address}</Address>
