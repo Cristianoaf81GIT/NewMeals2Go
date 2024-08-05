@@ -77,9 +77,9 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           </Rating>
           <SectionEnd>
             {isClosedTemporarily && <ClosedTemporarily>CLOSED TEMPORARILY</ClosedTemporarily>}
-            <Spacer variant="left.large" />
+            <Spacer position="left" size="large"/>
             {isOpenNow && <OpenIcon width={20} height={20} />}
-            <Spacer variant="left.large"/>
+            <Spacer position="left" size="large"/>
           </SectionEnd>
         </Section>
         <Address>{address}</Address>
