@@ -16,7 +16,7 @@ const SearchBarTheme = {
 const SafeContainer = styled(SafeAreaView)`
   display: flex;
   flex: 1;
-  margin-top: ${isAndroid ? Bar.currentHeight + 1 : 0}px
+  margin-top: ${isAndroid ? Bar.currentHeight + 1 : 0}px;
 `;
 
 const SearchContainer = styled(View)`
@@ -30,7 +30,7 @@ const SearchBarComponent = styled(Searchbar)`
 
 const RestaurantListContainer = styled(View)`
   flex: 1;
-  padding: ${props => props.theme.space[3]};
+  padding: ${(props) => props.theme.space[3]};
   background-color: ${MD2Colors.grey50};
 `;
 

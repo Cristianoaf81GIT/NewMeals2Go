@@ -26,12 +26,3 @@ export const Spacer = ({ position, size, children }) => {
   const variant = getVariant(position, size, appTheme);
   return <SpacerView variant={variant}>{children}</SpacerView>;
 };
-
-export const SpacerOldComponent = styled.View`
-  ${({ position, size, theme }) => getVariant(position, size, theme)}
-`;
-
-SpacerOldComponent.defaultProps = {
-  position: "top",
-  size: "small"
-};
