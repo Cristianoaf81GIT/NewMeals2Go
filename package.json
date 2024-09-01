@@ -16,7 +16,7 @@
   "dependencies": {
     "@expo-google-fonts/lato": "^0.2.3",
     "@expo-google-fonts/oswald": "^0.2.3",
-    "expo": "^51.0.26",
+    "expo": "^51.0.31",
     "expo-font": "~12.0.9",
     "expo-status-bar": "~1.12.1",
     "pre-commit": "^1.2.2",

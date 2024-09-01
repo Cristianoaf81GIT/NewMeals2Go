@@ -1,60 +1,26 @@
 import React from "react";
-import { Card, Text as PaperText, MD2Colors } from "react-native-paper";
-import { styled } from "styled-components/native";
+
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
+import {
+  RestaurantCard,
+  RestaurantCardCover,
+  Info,
+  Section,
+  Rating,
+  SectionEnd,
+  Address
+} from "./restaurant-info-card.styles";
+
 import Star from "../../../assets/star.svg";
 import OpenIcon from "../../../assets/open.svg";
-import { Spacer } from "../../../components/spacer/spacer.component";
+
 import uuid from "react-native-uuid";
-
-const RestaurantCard = styled(Card).attrs({ mode: "elevated", elevation: 5 })`
-  background-color: ${MD2Colors.grey200};
-`;
-
-const RestaurantCardCover = styled(Card.Cover)`
-  margin: 16px;
-`;
-
-const Title = styled(PaperText).attrs({ variant: "bodyMedium" })`
-  color: ${MD2Colors.red600};
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.body};
-`;
-
-const Info = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
-
-const Address = styled(PaperText)`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-`;
-
-const Rating = styled.View`
-  flex-direction: row;
-  padding-top: ${(props) => props.theme.space[2]};
-  paddind-bottom: ${(props) => props.theme.space[2]};
-`;
-
-const SectionEnd = styled.View`
-  flex: 1;
-  flex-direction: row;
-  justify-content: flex-end;
-`;
-
-const Section = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-const ClosedTemporarily = styled(PaperText).attrs({ variant: "labelSmall" })`
-  color: ${MD2Colors.red400};
-  margin-right: ${(props) => props.theme.sizes[1]};
-`;
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some restaurant",
-    icon,
+    icon = "",
     photos = ["https://cptstatic.s3.amazonaws.com/imagens/enviadas/materias/materia27698/culinaria-mineira-cpt.jpg"],
     address = "100 Some random address",
     isOpenNow = true,
@@ -68,7 +34,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     <RestaurantCard>
       <RestaurantCardCover source={{ uri: photos[0] }} />
       <Info>
-        <Title>{name}</Title>
+        <Text variant="label">{name}</Text>
         <Section>
           <Rating>
             {ratingArray(rating).map((_) => (
@@ -76,7 +42,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             ))}
           </Rating>
           <SectionEnd>
-            {isClosedTemporarily && <ClosedTemporarily>CLOSED TEMPORARILY</ClosedTemporarily>}
+            {isClosedTemporarily && <Text variant="error">CLOSED TEMPORARILY</Text>}
             <Spacer position="left" size="large" />
             {isOpenNow && <OpenIcon width={20} height={20} />}
             <Spacer position="left" size="large" />
