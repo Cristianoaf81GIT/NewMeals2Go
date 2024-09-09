@@ -1,8 +1,11 @@
 import React from "react";
-import { View, SafeAreaView, Platform, StatusBar as Bar } from "react-native";
+import { View, SafeAreaView, Platform, StatusBar as Bar, FlatList } from "react-native";
 import { Searchbar, MD2Colors } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card";
 import { styled } from "styled-components/native";
+import uuid from "react-native-uuid";
+import { Spacer } from "../../../components/spacer/spacer.component";
+
 
 const isAndroid = Platform.OS === "android";
 
@@ -18,7 +21,7 @@ const SafeContainer = styled(SafeAreaView)`
   flex: 1;
   margin-top: ${isAndroid ? Bar.currentHeight + 1 : 0}px;
 `;
-
+ 
 const SearchContainer = styled(View)`
   padding: ${(props) => props.theme.space[3]};
   background-color: ${MD2Colors.grey200};
@@ -48,9 +51,33 @@ export const RestaurantsScreen = () => {
           elevation={SearchBarTheme.elevation}
         />
       </SearchContainer>
-      <RestaurantListContainer>
-        <RestaurantInfoCard />
-      </RestaurantListContainer>
+
+        <FlatList
+            data={[
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+            ]}
+            renderItem={(__) => <>
+                <Spacer position="bottom" size="large">    
+                <RestaurantInfoCard />
+                </Spacer>    
+            </>}
+            keyExtractor={(_) => uuid.v4()}
+            contentContainerStyle = {{ padding: 16 }}
+        />
+      
     </SafeContainer>
   );
 };

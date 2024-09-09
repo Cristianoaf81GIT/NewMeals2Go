@@ -9,7 +9,7 @@ const defaultTextStyles = (theme) => `
     margin-bottom: 0px;
 `;
 
-const body = (theme) =>`
+const body = (theme) => `
     font-size: ${theme.fontSizes.body};
 `;
 
@@ -33,18 +33,18 @@ const label = (theme) => `
 `;
 
 const variants = {
-    body,
-    label,
-    caption,
-    error,
-    hint
-}
+  body,
+  label,
+  caption,
+  error,
+  hint
+};
 
 export const Text = styled.Text`
-    ${({theme}) => defaultTextStyles(theme)}
-    ${({variant, theme}) => variants[variant](theme)}
+  ${({ theme }) => defaultTextStyles(theme)}
+  ${({ variant, theme }) => variants[variant](theme)}
 `;
 
 Text.defaultProps = {
-    variant: "body"
+  variant: "body"
 };

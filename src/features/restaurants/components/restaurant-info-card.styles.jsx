@@ -1,7 +1,6 @@
 import { Card, Text as PaperText, MD2Colors } from "react-native-paper";
 import { styled } from "styled-components/native";
 
-
 export const RestaurantCard = styled(Card).attrs({ mode: "elevated", elevation: 5 })`
   background-color: ${MD2Colors.grey200};
 `;
@@ -46,4 +45,3 @@ export const ClosedTemporarily = styled(PaperText).attrs({ variant: "labelSmall"
   color: ${MD2Colors.red400};
   margin-right: ${(props) => props.theme.sizes[1]};
 `;
-
