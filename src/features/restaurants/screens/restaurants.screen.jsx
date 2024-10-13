@@ -7,14 +7,12 @@ import uuid from "react-native-uuid";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeContainer } from "../../../components/safe-area/safe-area.component";
 
-
 const SearchBarTheme = {
   colors: {
     primary: MD2Colors.blue500
   },
   elevation: 0
 };
-
 
 const SearchContainer = styled(View)`
   padding: ${(props) => props.theme.space[3]};

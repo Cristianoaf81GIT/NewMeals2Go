@@ -1,55 +1,76 @@
-import React from "react";
-import { Text } from "react-native";
-import { StatusBar as ExporStatusBar } from "expo-status-bar";
-// eslint-disable-next-line camelcase
-import { useFonts, Lato_400Regular } from "@expo-google-fonts/lato";
-// eslint-disable-next-line camelcase
-import { Oswald_400Regular } from "@expo-google-fonts/oswald";
+import React from 'react';
+import { Text } from 'react-native';
+import { StatusBar as ExporStatusBar } from 'expo-status-bar';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { ThemeProvider } from "styled-components/native";
+// eslint-disable-next-line camelcase
+import { useFonts, Lato_400Regular } from '@expo-google-fonts/lato';
+// eslint-disable-next-line camelcase
+import { Oswald_400Regular } from '@expo-google-fonts/oswald';
+
+import { ThemeProvider } from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { theme } from "./src/infrastruture/theme";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MD2Colors } from 'react-native-paper';
+import { theme } from './src/infrastruture/theme';
 
-
-import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
-import { SafeContainer } from "./src/components/safe-area/safe-area.component";
+import { RestaurantsScreen } from './src/features/restaurants/screens/restaurants.screen';
+import { SafeContainer } from './src/components/safe-area/safe-area.component';
 
 const StatusBarStyles = {
-  AUTO: "auto"
+  AUTO: 'auto',
 };
 
 const Tab = createBottomTabNavigator();
 
-const DemoScreen = () => (
+function DemoScreen() {
+  return (
     <SafeContainer>
-        <Text>DemoScreen</Text> 
+      <Text>DemoScreen</Text>
     </SafeContainer>
-);
+  );
+}
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     // eslint-disable-next-line camelcase
     Oswald_400Regular,
     // eslint-disable-next-line camelcase
-    Lato_400Regular
+    Lato_400Regular,
   });
 
   if (!fontsLoaded) {
     return null;
   }
 
+  const SCREEN_ICONS = {
+    Restaurants: 'restaurant-outline',
+    Map: 'map-outline',
+    Settings: 'settings-outline',
+    Default: 'restaurant-outline',
+  };
+
+  function TAB_ICONS({ color, route, size }) {
+    return <Ionicons name={SCREEN_ICONS[route.name]} size={size} color={color} />;
+  }
+
+  const routeOptions = ({ route }) => ({
+    tabeBarLabel: route.name,
+    tabBarActiveTintColor: MD2Colors.red200,
+    tabBarInactiveTintColor: MD2Colors.grey500,
+    tabBarIcon: ({ color }) => TAB_ICONS({ color, route, size: 24 }),
+  });
 
   return (
     <ThemeProvider theme={theme}>
-        <NavigationContainer>
+      <NavigationContainer>
         <Tab.Navigator>
-            <Tab.Screen name="Restaurant" component={RestaurantsScreen}/>    
-            <Tab.Screen name="Map" component={DemoScreen}/>
-            <Tab.Screen name="Settings" component={DemoScreen}/>
+          <Tab.Screen name="Restaurants" component={RestaurantsScreen} options={routeOptions} />
+          <Tab.Screen name="Map" component={DemoScreen} options={routeOptions} />
+          <Tab.Screen name="Settings" component={DemoScreen} options={routeOptions} />
         </Tab.Navigator>
-        </NavigationContainer>
+      </NavigationContainer>
       <ExporStatusBar style={StatusBarStyles.AUTO} />
     </ThemeProvider>
   );
