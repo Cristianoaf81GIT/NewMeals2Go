@@ -18,6 +18,10 @@ import { theme } from './src/infrastruture/theme';
 import { RestaurantsScreen } from './src/features/restaurants/screens/restaurants.screen';
 import { SafeContainer } from './src/components/safe-area/safe-area.component';
 
+import { restaurantRequest } from "./src/services/restaurants/restaurant.service";
+
+restaurantRequest().then(d => console.log(JSON.stringify(d, null, 4))).catch(console.error);
+
 const StatusBarStyles = {
   AUTO: 'auto',
 };
